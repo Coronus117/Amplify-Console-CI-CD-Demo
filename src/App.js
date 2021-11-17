@@ -7,11 +7,15 @@ import BackendServer from "./Components/BackendServer";
 import AddEditModal from "./Components/AddEditModal";
 
 function App() {
+  // has this app been initialized
+  const [initState, setInitState] = useState(false);
+
   // Store incoming data
   const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
     BackendServer.get().then((response) => {
+      setInitState(true);
       setAPIData(response.data.response);
     });
   }, []);
@@ -104,6 +108,7 @@ function App() {
           deletePostHandler={deletePostHandler}
           getSampleData={getSampleData}
           deleteAllData={deleteAllData}
+          initState={initState}
         />
         <AddEditModal
           modalMeta={modalMeta}

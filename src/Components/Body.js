@@ -1,7 +1,9 @@
 import BlogPostList from "./BlogPostList";
 import PastPosts from "./PastPosts";
 
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Tooltip, Stack } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 
 const Body = ({
   APIData,
@@ -9,28 +11,45 @@ const Body = ({
   deletePostHandler,
   getSampleData,
   deleteAllData,
+  initState,
 }) => {
-  const fullPage = () => {
+  const Page = () => {
     return (
-      <div className="body">
-        <PastPosts
-          APIData={APIData}
-          openModalHandler={openModalHandler}
-          getSampleData={getSampleData}
-          deleteAllData={deleteAllData}
-        />
-        <BlogPostList
-          APIData={APIData}
-          openModalHandler={openModalHandler}
-          deletePostHandler={deletePostHandler}
-        />
-      </div>
+      <>
+        {APIData.length > 0 ? (
+          <div className="body">
+            <PastPosts
+              APIData={APIData}
+              openModalHandler={openModalHandler}
+              getSampleData={getSampleData}
+              deleteAllData={deleteAllData}
+            />
+            <BlogPostList
+              APIData={APIData}
+              openModalHandler={openModalHandler}
+              deletePostHandler={deletePostHandler}
+            />
+          </div>
+        ) : (
+          <div>
+            <div>No Posts Found</div>
+            <Tooltip title="Create Sample Data">
+              <IconButton
+                aria-label="get sample data"
+                onClick={() => {
+                  getSampleData();
+                }}
+              >
+                <InsertEmoticonIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
+        )}
+      </>
     );
   };
 
-  return (
-    <div>{APIData.length > 1 ? <>{fullPage()}</> : <CircularProgress />}</div>
-  );
+  return <div>{initState ? <>{Page()}</> : <CircularProgress />}</div>;
 };
 
 export default Body;
