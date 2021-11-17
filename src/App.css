@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #eeeeee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: black;
+}
+
+.blog-post-card {
+  margin: 20px;
+  padding: 8px 16px;
+}
+
+.blog-post-title {
+  font-size: 40px;
+  margin: 20px;
+}
+
+.header-text {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.blog-post-list {
+  width: calc(100% - 340px);
+  order: 1;
+}
+
+.past-posts {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+  order: 0;
+}
+
+.past-posts-item {
+  padding: 8px;
+}
+
+.past-posts-item-title {
+  font-weight: bold;
+}
+.past-posts-item-timestamp {
+  font-size: small;
+}
+
+.past-posts-header {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 30px;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.modal-title-text {
+  margin-bottom: 30px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 30px;
+}
+
+.modal-input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media only screen and (max-width: 970px) {
+  .blog-post-list {
+    order: 0;
+    width: 100%;
+  }
+
+  .past-posts {
+    order: 1;
+    width: 100%px;
+  }
+}
